@@ -58,3 +58,18 @@ npm install @nestjs/typeorm typeorm pg
 # Add new entity without tests
 nest g class coffees/entities/flavor.entity --no-spec
 ```
+
+```bash
+# Using the Nest CLI let’s create this DTO by entering (in your terminal)
+nest g class common/dto/pagination-query.dto --no-spec
+```
+
+### Pagination
+
+```bash
+# Generate class of Pagination query
+nest g class common/dto/pagination-query.dto --no-spec
+```
+
+Use it:
+`localhost:3000/coffees?limit=2`
