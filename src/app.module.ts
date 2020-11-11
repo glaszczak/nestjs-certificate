@@ -11,7 +11,7 @@ import { DatabaseModule } from './database/database.module';
     type: 'postgres',
     host: 'localhost',
     port: 5432,
-    username: 'postgres', // grzegorzlaszczak?!?
+    username: 'postgres',
     password: 'password',
     database: 'postgres',
     autoLoadEntities: true,
