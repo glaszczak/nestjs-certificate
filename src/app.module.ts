@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CoffeesModule } from './coffees/coffees.module';
 import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [CoffeesModule, TypeOrmModule.forRoot({
@@ -15,7 +16,7 @@ import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
     database: 'postgres',
     autoLoadEntities: true,
     synchronize: true // (recommended: disable in the production)!!!
-  }), CoffeeRatingModule],
+  }), CoffeeRatingModule, DatabaseModule],
   controllers: [AppController],
   providers: [AppService],
 })

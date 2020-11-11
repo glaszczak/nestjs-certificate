@@ -98,6 +98,9 @@ nest g mo coffee-rating
 
 # Nest CLI - Generate a new CoffeeRatingService 
 nest g s coffee-rating
+
+# Generate a DatabaseModule
+nest g mo database
 ```
 
 ### Pagination
