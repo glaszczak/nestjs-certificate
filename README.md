@@ -89,11 +89,15 @@ npx typeorm migration:generate -n SchemaSync
 ```bash
 # Add new entity without tests
 nest g class coffees/entities/flavor.entity --no-spec
-```
 
-```bash
 # Using the Nest CLI let’s create this DTO by entering (in your terminal)
 nest g class common/dto/pagination-query.dto --no-spec
+
+# Nest CLI - Generate a new CoffeeRatingModule
+nest g mo coffee-rating
+
+# Nest CLI - Generate a new CoffeeRatingService 
+nest g s coffee-rating
 ```
 
 ### Pagination
