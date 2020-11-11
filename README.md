@@ -44,13 +44,45 @@ docker-compose up -d
 # Stop containers
 docker-compose down
 ```
+
 ### TypeORM
 
-// Install neccessary TypeORM dependencies
-
 ```bash
+# Install neccessary TypeORM dependencies
 npm install @nestjs/typeorm typeorm pg
 ```
+
+#### Migrations
+
+Create `ormconfig.js` file in the root directory.
+
+```bash
+# Creating a TypeOrm Migration (`CoffeeRefactor` it's a migration name)
+npx typeorm migration:create -n CoffeeRefactor
+```
+
+/* RUNNING MIGRATIONS */
+
+/**
+ * 💡 Remember 💡
+ * You must BUILD your Nest project (so that everything is output to the `/dist/` folder,
+ * before a Migration can run, it needs compilated files.
+ */
+ 
+ ```bash
+# Compile project first 
+npm run build
+
+# Run migration(s) 
+npx typeorm migration:run
+
+# REVERT migration(s)
+npx typeorm migration:revert
+
+# Let TypeOrm generate migrations (for you)
+npx typeorm migration:generate -n SchemaSync
+```
+
 
 ## Features
 
@@ -73,3 +105,4 @@ nest g class common/dto/pagination-query.dto --no-spec
 
 Use it:
 `localhost:3000/coffees?limit=2`
+
