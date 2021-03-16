@@ -31,7 +31,9 @@ export class CoffeesController {
 
   @Public()
   @Get()
-  findAll(@Query() paginationQuery: PaginationQueryDto) {
+  async findAll(@Query() paginationQuery: PaginationQueryDto) {
+    await new Promise(resolve => setTimeout(resolve, 5000));
+
     // const {limit, offset} = paginationQuery
     return this.coffeesService.findAll(paginationQuery);
   }
@@ -50,7 +52,8 @@ export class CoffeesController {
   @Patch(':id')
   update(
     @Param('id') id: string,
-    @Body(ValidationPipe) updateCoffeeDto: UpdateCoffeeDto) {
+    @Body(ValidationPipe) updateCoffeeDto: UpdateCoffeeDto,
+  ) {
     return this.coffeesService.update(id, updateCoffeeDto);
   }
 
