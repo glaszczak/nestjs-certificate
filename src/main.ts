@@ -14,6 +14,7 @@ async function bootstrap() {
       transformOptions: { enableImplicitConversion: true },
     }),
   );
+  // app.useGlobalFilters(new HttpExceptionFilter())
   app.useGlobalGuards(new ApiKeyGuard())
   await app.listen(3000);
 }
