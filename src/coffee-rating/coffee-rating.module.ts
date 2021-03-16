@@ -8,7 +8,8 @@ import { CoffeeRatingService } from './coffee-rating.service';
     DatabaseModule.register({ // 👈 passing in dynamic values
       type: 'postgres',
       host: 'localhost',
-      password: 'password',
+      password: 'postgres',
+      database: 'postgres',
       port: 5432,
     }),
     CoffeesModule,
