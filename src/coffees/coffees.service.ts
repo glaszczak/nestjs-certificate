@@ -8,9 +8,10 @@ import { Coffee } from './entities/coffee.entity';
 import { Flavor } from './entities/flavor.entity';
 import { Event } from '../events/entities/event.entity';
 import { COFFEE_BRANDS } from './coffees.constants';
+import { ConfigService } from '@nestjs/config';
 
-let i = 0 
-@Injectable({scope: Scope.REQUEST}) // 👈 CoffeesService will be instantiated on every request
+const i = 0;
+@Injectable({ scope: Scope.REQUEST }) // 👈 CoffeesService will be instantiated on every request
 export class CoffeesService {
   constructor(
     @InjectRepository(Coffee)
@@ -18,10 +19,11 @@ export class CoffeesService {
     @InjectRepository(Flavor)
     private readonly flavorRepository: Repository<Flavor>,
     private readonly connection: Connection,
-    @Inject(COFFEE_BRANDS) coffeeBrands: string[]
+    @Inject(COFFEE_BRANDS) coffeeBrands: string[],
+    private readonly configService: ConfigService,
   ) {
-    console.log('CoffeesService instantiated -> ', i); 
-    i++
+    const databaseHost = this.configService.get<string>('DATABASE_HOST', 'localhost');
+    console.log(databaseHost);
   }
 
   findAll(paginationQuery: PaginationQueryDto) {
