@@ -10,7 +10,6 @@ import { Event } from '../events/entities/event.entity';
 import { COFFEE_BRANDS } from './coffees.constants';
 import { ConfigService } from '@nestjs/config';
 
-const i = 0;
 @Injectable({ scope: Scope.REQUEST }) // 👈 CoffeesService will be instantiated on every request
 export class CoffeesService {
   constructor(
@@ -22,7 +21,7 @@ export class CoffeesService {
     @Inject(COFFEE_BRANDS) coffeeBrands: string[],
     private readonly configService: ConfigService,
   ) {
-    const databaseHost = this.configService.get<string>('DATABASE_HOST', 'localhost');
+    const databaseHost = this.configService.get('database.host', 'localhost');
     console.log(databaseHost);
   }
 
